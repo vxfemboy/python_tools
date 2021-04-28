@@ -35,6 +35,6 @@ cmac = validmac(val.iface)
 
 if cmac == val.mac:
     print('MAC CHANGED SUCCESFULLY!')
-    print(f'YOUR NEW MAC IS: {val.mac}')
+    print(f'NEW MAC: {val.mac}')
 else:
     print('MAC CHANGE FAILED!')
