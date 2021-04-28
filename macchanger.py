@@ -1,13 +1,13 @@
 #Mac Address Changer
 import subprocess
-import optparse
+import argparse
 import re
 
 def args():
-    parser = optparse.OptionParser()
-    parser.add_option('-i','--interface','--iface', dest='iface', help='Interface to Change the MAC')
-    parser.add_option('-m','--mac', dest='mac', help='Desired Mac Address')
-    (val, args) =  parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i','--interface','--iface', dest='iface', help='Interface to Change the MAC')
+    parser.add_argument('-m','--mac', dest='mac', help='Desired Mac Address')
+    (val) =  parser.parse_args()
     if not val.iface or not val.mac:
         parser.error('INVALID ARGS, USE --help')
     return val
@@ -29,7 +29,7 @@ def validmac(iface):
 
 val = args()
 cmac = validmac(val.iface)
-print(f"CURRENT MAC: {cmac}")
+print(f"OLD MAC: {cmac}")
 macchanger(val.iface, val.mac)
 cmac = validmac(val.iface)
 
