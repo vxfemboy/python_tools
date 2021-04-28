@@ -24,7 +24,7 @@ def scan(ip):
     return clilist
 
 def printres(reslist):
-    print('IP\t\t\tMAC ADDRESS\n====================================================')
+    print('IP ADDRESS\t\t\tMAC ADDRESS\n====================================================')
     for cli in reslist:
         print(cli['IP'] + '\t\t' + cli['MAC'])
 
