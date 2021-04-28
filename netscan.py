@@ -25,7 +25,7 @@ def scan(ip):
 
 def printres(reslist):
     print('IP ADDRESS\t\t\tMAC ADDRESS\n====================================================')
-    for cli in reslist:
+    for cli in reslist: #add OS/HOST l8r
         print(cli['IP'] + '\t\t' + cli['MAC'])
 
 val = args()
