@@ -21,8 +21,8 @@ def rest(dstip, srcip):
     pacc = scapy.ARP(op=2, pdst=dstip, hwdst=dstmac, psrc=srcip)
     scapy.send(pacc, count=4, verbose=False)
 
-tip = '10.0.2.15'
-sip = '10.0.2.1'
+tip = '10.0.2.15' #add arguments in a sec .drinking 
+sip = '10.0.2.1' # OH NO THIS IS A DRAGON
 
 try:
     pacccnt = 0
