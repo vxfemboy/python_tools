@@ -35,3 +35,4 @@ try:
 except KeyboardInterrupt:
     print("\nRESETTING ARP...")
     rest(tip, sip)
+    rest(sip, tip) # IDK WHY THIS DOESNT WORK BUT I WILL FIX SOON 
