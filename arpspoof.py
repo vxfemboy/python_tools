@@ -31,9 +31,6 @@ def rest(dstip, srcip):
     pacc = scapy.ARP(op=2, pdst=dstip, hwdst=dstmac, psrc=srcip)
     scapy.send(pacc, count=4, verbose=False)
 
-#tip = '10.0.2.4' #ADD ARGS 
-#sip = '10.0.2.1'
-
 val = args()
 
 try:
