@@ -39,12 +39,12 @@ val = args()
 try:
     pacccnt = 0
     while True:
-        spoof(tip, sip)
-        spoof(sip, tip)
+        spoof(val.tip, val.sip)
+        spoof(val.sip, val.tip)
         pacccnt += 2
         print(f'\rPACKETS SENT: {str(pacccnt)}', end="")
         time.sleep(2)
 except KeyboardInterrupt:
     print("\nRESETTING ARP...")
-    rest(tip, sip)
-    rest(sip, tip) # IDK WHY THIS DOESNT WORK BUT I WILL FIX SOON 
+    rest(val.tip, val.sip)
+    rest(val.sip, val.tip) # IDK WHY THIS DOESNT WORK BUT I WILL FIX SOON 
