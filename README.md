@@ -26,4 +26,4 @@ Usage: `arpspoof.py -t 127.0.0.1 -s 127.0.0.1`
 
 `-t, --target` for your victims IP 
 
-`-s, -spoof` for the gateway IP to spoof
+`-s, --spoof` for the gateway IP to spoof
