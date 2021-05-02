@@ -6,10 +6,11 @@ from scapy.layers import http
 def args():
     parser = argparse.ArgumentParser()
     parser.add_argument('-i','--interface','--iface', dest='iface', help='Interface to Change the MAC')
-    (val) =  parser.parse_args()
+    (val) =  parser.parse_args() #add filter args l8r
     if not val.iface:
         parser.error('INVALID ARGS, USE --help')
     return val
+
 def sniff(iface):
     scapy.sniff(iface=iface, store=False, prn=sniffpacc)
 
