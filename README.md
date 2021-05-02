@@ -27,3 +27,10 @@ Usage: `arpspoof.py -t 127.0.0.1 -s 127.0.0.1`
 `-t, --target` for your victims IP 
 
 `-s, --spoof` for the gateway IP to spoof
+
+## Network Sniffer
+A Tool to sniff packets
+
+Usage: 	`netsniff.py -i wlan1`
+
+`-i, -iface, -interface` for your interface
