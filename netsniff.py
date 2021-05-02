@@ -31,8 +31,9 @@ def sniffpacc(pacc):
         url = gurl(pacc)
         print(f'HTTP REQUEST: {url}')
         load = login(pacc)
-        if load != 'None':
+        if login(pacc):
             print(f'\n\nPOSSIBLE LOGIN FOUND: {load}\n\n') # FIX FOR NO RETURN
+
         
                 
 
