@@ -20,7 +20,7 @@ def url(pacc):
 def login(pacc):
     if pacc.haslayer(scapy.Raw):
             load = pacc[scapy.Raw].load #add more fields and threads later
-            kywds = ['user', 'pass', 'name', 'mail,', 'word', 'login']
+            kywds = ['user', 'pass', 'name', 'mail', 'word', 'login']
             for kywds in b'{kywds}':
                 if kywds in load:
                     return load
