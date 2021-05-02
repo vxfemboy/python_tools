@@ -32,9 +32,6 @@ def sniffpacc(pacc):
         if login(pacc):
             print(f'\n\nPOSSIBLE LOGIN FOUND: {login(pacc).decode()}\n\n')
 
-        
-                
-
 val = args()
 sniff(val.iface)
 #except OSError: #detect if iface is correct
