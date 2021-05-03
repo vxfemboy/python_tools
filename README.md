@@ -34,3 +34,13 @@ A Tool to sniff packets
 Usage: 	`netsniff.py -i wlan1`
 
 `-i, -iface, -interface` for your interface
+
+## DNS Spoofer
+A tool to spoof DNS traffic from the victims device to the Attacker
+
+Usage: `dnsspoof.py -t example.com -ip 127.0.0.1`
+
+`-t, --target` for your victims IP 
+
+`-ip` for the IP to of the server to reroute to
+
