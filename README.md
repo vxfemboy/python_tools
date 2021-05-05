@@ -33,7 +33,7 @@ A Tool to sniff packets
 
 Usage: 	`netsniff.py -i wlan1`
 
-`-i, -iface, -interface` for your interface
+`-i, --iface, --interface` for your interface
 
 ## File Interceptor
 A tool to intercept files on the network and replace them with the attackers
@@ -53,3 +53,9 @@ Usage: `dnsspoof.py -t example.com -ip 127.0.0.1`
 
 `-ip` for the IP to of the server to reroute to
 
+## Code Injector
+A Tool to inject code on network
+
+Usage: 	`netsniff.py -i <script>alert('pwn');</script>`
+
+`-i, --inject` for your code to inject
